@@ -31,6 +31,38 @@ public class LifeCircleViewController: UIViewController {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
+        
+        /**
+         
+         public class let didEnterBackgroundNotification: NSNotification.Name
+         public class let willEnterForegroundNotification: NSNotification.Name
+         public class let didFinishLaunchingNotification: NSNotification.Name
+         public class let didBecomeActiveNotification: NSNotification.Name
+         public class let willResignActiveNotification: NSNotification.Name
+         public class let willTerminateNotification: NSNotification.Name
+
+         public class let significantTimeChangeNotification: NSNotification.Name
+         */
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(didFinishLaunchingNotification(notification:)), name: UIApplication.didFinishLaunchingNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(willEnterForegroundNotification(notification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(didBecomeActiveNotification(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(willResignActiveNotification(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(didEnterBackgroundNotification(notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(willTerminateNotification(notification:)), name: UIApplication.willTerminateNotification, object: nil)
+        
         log()
     }
     
@@ -90,6 +122,34 @@ public class LifeCircleViewController: UIViewController {
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
+        log()
+    }
+}
+
+
+public extension LifeCircleViewController {
+    
+    @objc func didFinishLaunchingNotification(notification: Notification) {
+        log()
+    }
+    
+    @objc func didBecomeActiveNotification(notification: Notification) {
+        log()
+    }
+    
+    @objc func willResignActiveNotification(notification: Notification) {
+        log()
+    }
+    
+    @objc func willTerminateNotification(notification: Notification) {
+        log()
+    }
+    
+    @objc func willEnterForegroundNotification(notification: Notification) {
+        log()
+    }
+    @objc func didEnterBackgroundNotification(notification: Notification) {
         log()
     }
 }
