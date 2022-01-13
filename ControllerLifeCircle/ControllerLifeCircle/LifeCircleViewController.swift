@@ -111,6 +111,11 @@ public class LifeCircleViewController: UIViewController {
         log()
     }
     
+    public override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        log()
+    }
+    
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         log()
